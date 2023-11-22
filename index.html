@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Website</title>
+  <style>
+    /* Voeg hier stijling toe voor de pagina */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    #buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+    #images {
+      display: none;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+    .gallery img {
+      width: 40%; /* Pas de grootte van de afbeeldingen aan naar wens */
+      padding: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div id="buttons">
+    <button id="generateCollection">Genereer collectie</button>
+    <button id="generateExtension">Genereer met uitbreiding</button>
+  </div>
+
+  <div id="images" class="gallery"></div>
+
+  <script>
+    const button1Images = [
+      "image1.jpg",
+      "image2.jpg",
+      "image3.jpg",
+      "image4.jpg",
+      "image5.jpg",
+      "image6.jpg",
+      "image7.jpg",
+      "image8.jpg",
+      "image9.jpg",
+      "image10.jpg",
+      "image11.jpg",
+      "image12.jpg"
+    ];
+
+    const button2Images = [
+      "image13.jpg",
+      "image14.jpg",
+      "image15.jpg",
+      "image16.jpg",
+      "image17.jpg",
+      "image18.jpg",
+      "image19.jpg",
+      "image20.jpg",
+      "image21.jpg",
+      "image22.jpg",
+      "image23.jpg",
+      "image24.jpg",
+      "image25.jpg",
+      "image26.jpg",
+      "image27.jpg",
+      "image28.jpg",
+      "image29.jpg",
+      "image30.jpg"
+    ];
+
+    document.getElementById('generateCollection').addEventListener('click', function() {
+      displayRandomImages(button1Images);
+    });
+
+    document.getElementById('generateExtension').addEventListener('click', function() {
+      displayRandomImages(button2Images);
+    });
+
+    function displayRandomImages(imagesArray) {
+      const imagesDiv = document.getElementById('images');
+      imagesDiv.innerHTML = '';
+      const shuffledImages = shuffleArray(imagesArray);
+      for (let i = 0; i < 6; i++) {
+        const img = document.createElement('img');
+        img.src = shuffledImages[i];
+        imagesDiv.appendChild(img);
+      }
+      imagesDiv.style.display = 'block';
+    }
+
+    function shuffleArray(array) {
+      let currentIndex = array.length, temporaryValue, randomIndex;
+      while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+      return array;
+    }
+  </script>
+</body>
+</html>
