@@ -51,67 +51,73 @@
 </head>
 <body>
   <div id="buttons">
-    <button id="generateCollection">Genereer collectie</button>
-    <button id="generateExtension">Genereer met uitbreiding</button>
+    <button id="generateCollection">Generate</button>
+    <button id="generateExtension">Generate with expansion</button>
   </div>
 
   <div id="images" class="gallery"></div>
 
   <script>
     const button1Images = [
-      "image1.jpg",
-      "image2.jpg",
-      "image3.jpg",
-      "image4.jpg",
-      "image5.jpg",
-      "image6.jpg",
-      "image7.jpg",
-      "image8.jpg",
-      "image9.jpg",
-      "image10.jpg",
-      "image11.jpg",
-      "image12.jpg"
+      "fmirror.jpg",
+      "ftrap.jpg",
+      "feggs.jpg",
+      "ffart.jpg",
+      "f3630.jpg",
+      "f-25.jpg",
+      "ffox.jpg",
+      "f321.jpg",
+      "f-104.jpg",
+      "f-5-43.jpg",
+      "f0least5.jpg",
+      "f00100.jpg"
     ];
 
     const button2Images = [
-      "image13.jpg",
-      "image14.jpg",
-      "image15.jpg",
-      "image16.jpg",
-      "image17.jpg",
-      "image18.jpg",
-      "image19.jpg",
-      "image20.jpg",
-      "image21.jpg",
-      "image22.jpg",
-      "image23.jpg",
-      "image24.jpg",
-      "image25.jpg",
-      "image26.jpg",
-      "image27.jpg",
-      "image28.jpg",
-      "image29.jpg",
-      "image30.jpg"
+      "f00100.jpg",
+      "fmirror.jpg",
+      "fnet.jpg",
+      "ftrap.jpg",
+      "f303030.jpg",
+      "f5-1.jpg",
+      "feggs.jpg",
+      "ffart.jpg",
+      "f3630.jpg",
+      "f-25.jpg",
+      "ffox.jpg",
+      "fdog.jpg",
+      "f321.jpg",
+      "f753.jpg",
+      "f-5-43.jpg",
+      "f0least5.jpg",
+      "f705030.jpg",
+      "f-104.jpg"
     ];
 
+   // Voeg een eventlistener toe aan de knoppen
     document.getElementById('generateCollection').addEventListener('click', function() {
-      displayRandomImages(button1Images);
+      openNewPage(button1Images);
     });
 
     document.getElementById('generateExtension').addEventListener('click', function() {
-      displayRandomImages(button2Images);
+      openNewPage(button2Images);
     });
 
-    function displayRandomImages(imagesArray) {
-      const imagesDiv = document.getElementById('images');
-      imagesDiv.innerHTML = '';
-      const shuffledImages = shuffleArray(imagesArray);
-      for (let i = 0; i < 6; i++) {
-        const img = document.createElement('img');
-        img.src = shuffledImages[i];
-        imagesDiv.appendChild(img);
-      }
-      imagesDiv.style.display = 'block';
+    // Functie om een nieuwe pagina te openen en afbeeldingen weer te geven
+    function openNewPage(imagesArray) {
+      const shuffledImages = shuffleArray(imagesArray).slice(0, 6); // Kies 6 willekeurige afbeeldingen
+
+      // Creëer een nieuwe pagina
+      const newPage = window.open('about:blank');
+      newPage.document.write('<html><head><title>Image Gallery</title></head><body>');
+
+      // Voeg de afbeeldingen toe aan de nieuwe pagina
+      shuffledImages.forEach(image => {
+        newPage.document.write(`<img src="${image}" style="width: 40%; padding: 5px; box-sizing: border-box;">`);
+      });
+
+      newPage.document.write('</body></html>');
+      newPage.document.close(); // Sluit het document af om de pagina te voltooien
     }
 
     function shuffleArray(array) {
