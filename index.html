@@ -12,7 +12,7 @@
       padding: 0;
       text-align: center;
       /* Achtergrondafbeelding toevoegen */
-      background-image: url('Afbeelding (31).jpg'); /* Vervang 'achtergrondafbeelding.jpg' door de URL of het pad naar jouw achtergrondafbeelding */
+      background-image: url('images/cover.jpg'); /* Vervang 'achtergrondafbeelding.jpg' door de URL of het pad naar jouw achtergrondafbeelding */
       background-size: cover; /* Hiermee wordt de achtergrondafbeelding schermvullend gemaakt */
       background-position: center; /* Dit plaatst de achtergrondafbeelding in het midden van de pagina */
       background-size: contain; /* Verander de waarde van background-size */
@@ -59,43 +59,39 @@
 
   <script>
     const button1Images = [
-      "fmirror.jpg",
-      "ftrap.jpg",
-      "feggs.jpg",
-      "ffart.jpg",
-      "f3630.jpg",
-      "f-25.jpg",
-      "ffox.jpg",
-      "f321.jpg",
-      "f-104.jpg",
-      "f-5-43.jpg",
+      "images/fmirrorsmall.jpg",
+      "images/ftrapsmall.jpg",
+      "images/feggssmall.jpg",
+      "images/ffartsmall.jpg",
+      "images/f3630small.jpg",
+      "images/f-25small.jpg",
+      "images/ffoxsmall.jpg",
+      "images/f321small.jpg",
+      "images/f-104small.jpg",
+      "images/f-5-43small.jpg",
       "images/f0least5small.jpg",
-      "images/f0least5small.jpg",
-      "images/f0least5small.jpg",
-      "images/f0least5small.jpg",
-      "images/f0least5small.jpg",
-      "f00100.jpg"
+      "images/f705030small.jpg",
     ];
 
     const button2Images = [
-      "f00100.jpg",
-      "fmirror.jpg",
-      "fnet.jpg",
-      "ftrap.jpg",
-      "f303030.jpg",
-      "f5-1.jpg",
-      "feggs.jpg",
-      "ffart.jpg",
-      "f3630.jpg",
-      "f-25.jpg",
-      "ffox.jpg",
-      "fdog.jpg",
-      "f321.jpg",
-      "f753.jpg",
-      "f-5-43.jpg",
-      "f0least5.jpg",
-      "f705030.jpg",
-      "f-104.jpg"
+      "images/fmirrorsmall.jpg",
+      "images/ftrapsmall.jpg",
+      "images/feggssmall.jpg",
+      "images/ffartsmall.jpg",
+      "images/f3630small.jpg",
+      "images/f-25small.jpg",
+      "images/ffoxsmall.jpg",
+      "images/f321small.jpg",
+      "images/f-104small.jpg",
+      "images/f-5-43small.jpg",
+      "images/f0least5small.jpg",
+      "images/f705030.jpg",
+      "images/f00100small.jpg",
+      "images/fnetsmall.jpg",
+      "images/f303030small.jpg",
+      "images/f5-1small.jpg",
+      "images/fdogsmall.jpg",
+      "images/f753small.jpg",
     ];
 
    // Voeg een eventlistener toe aan de knoppen
@@ -109,12 +105,16 @@
 
     // Functie om een nieuwe pagina te openen en afbeeldingen weer te geven
     function openNewPage(imagesArray) {
+	
       const shuffledImages = shuffleArray(imagesArray).slice(0, 6); // Kies 6 willekeurige afbeeldingen
 
       // Creëer een nieuwe pagina
       const newPage = window.open('about:blank');
       newPage.document.write('<html><head><title>Image Gallery</title></head><body>');
 
+      newPage.document.addEventListener('click', function(event) {
+        newPage.window.location.href = 'index.html'; // Vervang 'index.html' door de juiste pagina waar je naartoe wilt springen
+      });
       // Voeg de afbeeldingen toe aan de nieuwe pagina
       shuffledImages.forEach(image => {
         newPage.document.write(`<img src="${image}" style="width: 35%; padding: 5px; box-sizing: border-box;">`);
