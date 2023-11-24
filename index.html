@@ -18,16 +18,14 @@
       background-size: contain; /* Verander de waarde van background-size */
       background-repeat: no-repeat; /* Voorkom herhaling van de achtergrondafbeelding */
       background-attachment: fixed; /* Houd de achtergrondafbeelding vast terwijl de pagina wordt gescrold */
+	  position: relative; /* Voeg relatieve positionering toe aan het body-element */
     }
     #buttons {
-      display: flex;
-      align-items: center;
       height: 100vh;
-      flex-direction: column;
-
-      justify-content: flex-end; /* Verander deze eigenschap */
-      margin-bottom: 400px;
-    }
+      position: absolute; /* Absolute positionering voor de knoppen binnen de relatief gepositioneerde body */
+      top: 60%; /* Plaats de knoppen op 60% van de verticale as */
+      left: 50%; /* Plaats de knoppen op 50% van de horizontale as */
+      transform: translate(-50%, -50%); /* Verschuif de knoppen naar het midden van het scherm */    }
     button {
       margin: 10px;
       padding: 10px 20px;
